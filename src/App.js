@@ -15,7 +15,7 @@ function App() {
   const [hourDegree, setHourDegree] = React.useState();
   const [minuteDegree, setMinuteDegree] = React.useState();
   const [secondDegree, setSecondDegree] = React.useState();
-  const [selectedType, setSelectedType] = React.useState("Classic");
+  const [selectedType, setSelectedType] = React.useState("classic");
 
   React.useEffect(() => {
     const interval = setInterval(function () {
