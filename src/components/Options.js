@@ -7,6 +7,7 @@ import { selectLayout } from "../redux/layoutReducer";
 const options = [
   { name: "Analog", value: "analog" },
   { name: "Digital", value: "digital" },
+  { name: "Pomodor", value: "pomodor" },
 ];
 
 const Options = () => {

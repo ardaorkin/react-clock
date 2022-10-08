@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
 
 html {
-  overflow: hidden;
   width: 100%;
   height: 100%;
+  background-color: #b73e3e;
 }
 
 body {
@@ -20,7 +20,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 }
 
 body::-webkit-scrollbar {

@@ -14,6 +14,18 @@
   justify-content: center;
 }
 
+.lefted {
+  display: flex;
+  align-items: flex-end;
+  justify-content: end;
+}
+
+.righted {
+  display: flex;
+  align-items: flex-start;
+  justify-content: start;
+}
+
 .app-wrapper-container {
   display: flex;
   flex-direction: row;
@@ -110,4 +122,29 @@
 
 input[type="radio"] {
   cursor: pointer;
+}
+
+.pomodor-wrapper {
+  color: white;
+}
+
+.pomodor-count {
+  display: flex;
+  align-items: flex-start;
+  justify-content: start;
+}
+
+.pomodor-btn {
+  background: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+  border: rgba(255, 255, 255, 0.3) !important;
+  border-radius: 0 !important;
+  width: 7rem;
+  margin-bottom: 3%;
+}
+
+.pomodor-time {
+  font-size: 5rem;
 }
