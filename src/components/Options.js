@@ -15,8 +15,7 @@ const Options = () => {
   const dispatch = useDispatch();
 
   return (
-    <div id="options-wrapper">
-      <h1>Pick A Clock Type</h1>
+    <div className="centered semi-area options-wrapper">
       <ButtonGroup>
         {options.map((radio, idx) => (
           <ToggleButton
@@ -24,6 +23,13 @@ const Options = () => {
             id={`radio-${idx}`}
             type="radio"
             name="radio"
+            variant="light"
+            style={{
+              background: "transparent",
+              border: "none",
+              color: selectedLayout === radio.value ? "white" : "#d5d5d5b3",
+              outline: "none !important",
+            }}
             value={radio.value}
             checked={selectedLayout === radio.value}
             onChange={(e) => dispatch(selectLayout(e.currentTarget.value))}
