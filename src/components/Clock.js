@@ -2,7 +2,7 @@ import React from "react";
 import analog from "../assets/classic.png";
 import { useDispatch, useSelector } from "react-redux";
 import { getDegrees, getHMS } from "../redux/clockReducer";
-import Pomodor from "./Pomodor";
+import Pomodoro from "./Pomodoro";
 
 const Clock = () => {
   const time = useSelector((state) => state.clock.time);
@@ -10,7 +10,7 @@ const Clock = () => {
   const selectedLayout = useSelector((state) => state.layout.selectedLayout);
   const dispatch = useDispatch();
   React.useEffect(() => {
-    if (selectedLayout !== "pomodor") {
+    if (selectedLayout !== "pomodoro") {
       const interval = setInterval(function () {
         dispatch(getHMS());
         dispatch(getDegrees());
@@ -42,8 +42,8 @@ const Clock = () => {
         <div id="dot"></div>
       </div>
     </div>
-  ) : selectedLayout === "pomodor" ? (
-    <Pomodor />
+  ) : selectedLayout === "pomodoro" ? (
+    <Pomodoro />
   ) : (
     <div id="clock">
       <div className="digital-wrapper centered">
