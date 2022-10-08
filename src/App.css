@@ -145,6 +145,26 @@ input[type="radio"] {
   margin-bottom: 3%;
 }
 
+.footer-btn {
+  background: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+  border: rgba(255, 255, 255, 0.3) !important;
+  border-radius: 0 !important;
+  margin: 0 1% 2% 1%;
+  width: 2rem;
+  height: 1rem;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .pomodoro-time {
   font-size: 5rem;
+}
+
+.pomodoro-footer {
+  color: white;
 }

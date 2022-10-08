@@ -76,9 +76,6 @@ const Pomodoro = () => {
           {state.pomodoroTime}
         </Col>
       </Row>
-      <Row className="fill-area">
-        <Col className="fill-area centered pomodoro-time"></Col>
-      </Row>
     </Container>
   );
 };

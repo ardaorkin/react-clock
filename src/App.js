@@ -5,8 +5,11 @@ import Clock from "./components/Clock";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
+import PomodoroFooter from "./components/PomodoroFooter";
+import { useSelector } from "react-redux";
 
 function App() {
+  const selectedLayout = useSelector((state) => state.layout.selectedLayout);
   return (
     <Container className="fill-area centered">
       <Card
@@ -28,6 +31,11 @@ function App() {
             <Clock />
           </Row>
         </Card.Body>
+        {selectedLayout === "pomodoro" ? (
+          <Card.Footer className="fill-area">
+            <PomodoroFooter />
+          </Card.Footer>
+        ) : null}
       </Card>
     </Container>
   );
