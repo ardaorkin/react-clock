@@ -18,8 +18,21 @@ const pomodoroSlice = createSlice({
     setPerPomodoro: (state, action) => {
       state.perPomodoro = action.payload;
     },
-    setBreakLength: (state, action) => {
-      state.breakLength = action.payload;
+    increaseBreakLength: (state) => {
+      state.breakLength += 60;
+    },
+    decreaseBreakLength: (state) => {
+      if (state.breakLength > 60) {
+        state.breakLength -= 60;
+      }
+    },
+    increasePerPomodoro: (state) => {
+      state.perPomodoro += 60;
+    },
+    decreasePerPomodoro: (state) => {
+      if (state.perPomodoro > 60) {
+        state.perPomodoro -= 60;
+      }
     },
     startPomodoro: (state) => {
       state.pomodoroSeconds++;
@@ -37,5 +50,9 @@ export const {
   setBreakLength,
   startPomodoro,
   resetPomodoro,
+  increaseBreakLength,
+  decreaseBreakLength,
+  increasePerPomodoro,
+  decreasePerPomodoro,
 } = pomodoroSlice.actions;
 export default pomodoroSlice.reducer;
