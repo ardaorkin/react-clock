@@ -21,9 +21,15 @@
   justify-content: space-between;
 }
 
+.app-card {
+  width: 35rem;
+  height: 40rem;
+}
+
 .app-card-body {
   padding-top: 0 !important;
   padding-bottom: 3rem;
+  width: 35rem;
   height: 40rem;
 }
 

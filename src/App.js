@@ -10,7 +10,7 @@ function App() {
   return (
     <Container className="fill-area centered">
       <Card
-        className="semi-area app-card"
+        className="semi-area app-card centered"
         style={{
           background: "rgba(255, 255, 255, 0.05)",
           borderRadius: 16,
