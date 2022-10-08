@@ -1,56 +1,54 @@
 import React from "react";
-import romen from "../assets/romen.png";
-import classic from "../assets/classic.png";
-import sport from "../assets/sport.png";
-import { useSelector } from "react-redux";
-
-var clockTypes = {
-  romen,
-  classic,
-  sport,
-};
+import analog from "../assets/classic.png";
+import { useDispatch, useSelector } from "react-redux";
+import { getDegrees, getHMS } from "../redux/clockReducer";
+import { Col, Row } from "react-bootstrap";
 
 const Clock = () => {
-  const [hourDegree, setHourDegree] = React.useState();
-  const [minuteDegree, setMinuteDegree] = React.useState();
-  const [secondDegree, setSecondDegree] = React.useState();
+  const time = useSelector((state) => state.clock.time);
+  const degrees = useSelector((state) => state.clock.degrees);
   const selectedLayout = useSelector((state) => state.layout.selectedLayout);
-
+  const dispatch = useDispatch();
   React.useEffect(() => {
     const interval = setInterval(function () {
-      const time = new Date().toLocaleTimeString("tr-TR", {
-        hour: "numeric",
-        minute: "numeric",
-        second: "numeric",
-      });
-      const hour = time.split(":")[0];
-      const minute = time.split(":")[1];
-      const second = time.split(":")[2];
-      setHourDegree(hour * 30 - 360);
-      setMinuteDegree(minute * 6 - 360);
-      setSecondDegree(second * 6 - 360);
+      dispatch(getHMS());
+      dispatch(getDegrees());
     }, 1000);
     return () => clearInterval(interval);
   }, []);
 
-  return (
+  return selectedLayout === "analog" ? (
     <div
       id="clock"
       style={{
-        backgroundImage: `url(${clockTypes[selectedLayout]})`,
+        backgroundImage: `url(${analog})`,
       }}
     >
       <div id="container">
-        <div id="hour" style={{ transform: `rotate(${hourDegree}deg)` }}></div>
+        <div
+          id="hour"
+          style={{ transform: `rotate(${degrees?.hourDegree}deg)` }}
+        ></div>
         <div
           id="minute"
-          style={{ transform: `rotate(${minuteDegree}deg)` }}
+          style={{ transform: `rotate(${degrees?.minuteDegree}deg)` }}
         ></div>
         <div
           id="second"
-          style={{ transform: `rotate(${secondDegree}deg)` }}
+          style={{ transform: `rotate(${degrees?.secondDegree}deg)` }}
         ></div>
         <div id="dot"></div>
+      </div>
+    </div>
+  ) : (
+    <div id="clock">
+      <div className="digital-wrapper centered">
+        {Object.values(time).map((value, idx) => (
+          <div>
+            {value}
+            {idx < 2 ? ":" : ""}
+          </div>
+        ))}
       </div>
     </div>
   );

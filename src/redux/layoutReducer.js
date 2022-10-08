@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const layoutSlice = createSlice({
-  name: "clock_layout",
+  name: "layout",
   initialState: {
-    selectedLayout: "classic",
+    selectedLayout: "analog",
   },
   reducers: {
     selectLayout: (state, action) => {

@@ -21,10 +21,10 @@ function App() {
         }}
       >
         <Card.Body className="app-card-body">
-          <Row className="fill-area centered">
+          <Row className="centered">
             <Options />
           </Row>
-          <Row className="fill-area clock-row">
+          <Row className="clock-row">
             <Clock />
           </Row>
         </Card.Body>
