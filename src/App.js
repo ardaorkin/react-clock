@@ -1,72 +1,23 @@
 import "./App.css";
 import React from "react";
 import Options from "./components/Options";
-import romen from "./assets/romen.png";
-import classic from "./assets/classic.png";
-import sport from "./assets/sport.png";
-
-var clockTypes = {
-  romen,
-  classic,
-  sport,
-};
+import Clock from "./components/Clock";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 function App() {
-  const [hourDegree, setHourDegree] = React.useState();
-  const [minuteDegree, setMinuteDegree] = React.useState();
-  const [secondDegree, setSecondDegree] = React.useState();
-  const [selectedType, setSelectedType] = React.useState("classic");
-
-  React.useEffect(() => {
-    const interval = setInterval(function () {
-      const time = new Date().toLocaleTimeString("tr-TR", {
-        hour: "numeric",
-        minute: "numeric",
-        second: "numeric",
-      });
-      const hour = time.split(":")[0];
-      const minute = time.split(":")[1];
-      const second = time.split(":")[2];
-      setHourDegree(hour * 30 - 360);
-      setMinuteDegree(minute * 6 - 360);
-      setSecondDegree(second * 6 - 360);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleSelectClockType = (event) => {
-    setSelectedType(event.target.value);
-  };
-
   return (
-    <div className="app">
-      <div
-        id="clock"
-        style={{
-          backgroundImage: `url(${clockTypes[selectedType]})`,
-        }}
-      >
-        <div id="container">
-          <div
-            id="hour"
-            style={{ transform: `rotate(${hourDegree}deg)` }}
-          ></div>
-          <div
-            id="minute"
-            style={{ transform: `rotate(${minuteDegree}deg)` }}
-          ></div>
-          <div
-            id="second"
-            style={{ transform: `rotate(${secondDegree}deg)` }}
-          ></div>
-          <div id="dot"></div>
-        </div>
-      </div>
-      <Options
-        handleSelectClockType={handleSelectClockType}
-        selectedType={selectedType}
-      />
-    </div>
+    <Container className="app-wrapper-container">
+      <Row className="app-wrapper-row">
+        <Col className="clock-wrapper">
+          <Clock />
+        </Col>
+        <Col className="options-wrapper">
+          <Options />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

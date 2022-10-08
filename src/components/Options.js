@@ -1,38 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import ToggleButton from "react-bootstrap/ToggleButton";
+import { useSelector, useDispatch } from "react-redux";
+import { selectLayout } from "../redux/reducers";
 
-const Options = ({ handleSelectClockType, selectedType }) => {
+const options = [
+  { name: "Classic", value: "classic" },
+  { name: "Romen", value: "romen" },
+  { name: "Sport", value: "sport" },
+];
+
+const Options = () => {
+  const selectedLayout = useSelector((state) => state.layout.selectedLayout);
+  const dispatch = useDispatch();
+
   return (
     <div id="options-wrapper">
       <h1>Pick A Clock Type</h1>
-      <div id="options-group">
-        <input
-          checked={selectedType === "classic" || !selectedType}
-          className="radio-btn"
-          type="radio"
-          value="classic"
-          name="clock-type"
-          onChange={handleSelectClockType}
-        />
-        <h2 className="radio-btn"> Classic</h2>
-        <input
-          checked={selectedType === "romen"}
-          className="radio-btn"
-          type="radio"
-          value="romen"
-          name="clock-type"
-          onChange={handleSelectClockType}
-        />
-        <h2 className="radio-btn"> Romen</h2>
-        <input
-          checked={selectedType === "sport"}
-          className="radio-btn"
-          type="radio"
-          value="sport"
-          name="clock-type"
-          onChange={handleSelectClockType}
-        />
-        <h2 className="radio-btn"> Sport</h2>
-      </div>
+      <ButtonGroup>
+        {options.map((radio, idx) => (
+          <ToggleButton
+            key={idx}
+            id={`radio-${idx}`}
+            type="radio"
+            name="radio"
+            value={radio.value}
+            checked={selectedLayout === radio.value}
+            onChange={(e) => dispatch(selectLayout(e.currentTarget.value))}
+          >
+            {radio.name}
+          </ToggleButton>
+        ))}
+      </ButtonGroup>
     </div>
   );
 };
