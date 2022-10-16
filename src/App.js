@@ -7,9 +7,11 @@ import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
 import PomodoroFooter from "./components/PomodoroFooter";
 import { useSelector } from "react-redux";
+import Login from "./components/Login";
 
 function App() {
   const selectedLayout = useSelector((state) => state.layout.selectedLayout);
+  return <Login />;
   return (
     <Container className="fill-area centered">
       <Card
