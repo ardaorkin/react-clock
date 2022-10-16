@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card, Row } from "react-bootstrap";
 import loginRequest from "../helpers/loginRequest";
+import { redirect } from "react-router-dom";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({});
@@ -16,6 +17,7 @@ const Login = () => {
     try {
       const { token } = await loginRequest(credentials);
       localStorage.setItem("access_token", token);
+      window.location.reload();
     } catch (error) {
       alert(error.message);
     }
@@ -47,7 +49,8 @@ const Login = () => {
             onChange={handleCredentials}
           />
           <input type="password" name="password" onChange={handleCredentials} />
-          <button
+          <input
+            type="submit"
             onClick={handleLogin}
             disabled={
               !(
@@ -55,9 +58,8 @@ const Login = () => {
                 credentials.password?.length
               )
             }
-          >
-            Login
-          </button>
+            value="Login"
+          />
         </Row>
       </Card.Body>
     </Card>

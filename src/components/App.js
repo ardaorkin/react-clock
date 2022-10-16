@@ -1,17 +1,14 @@
-import "./App.css";
-import React from "react";
-import Options from "./components/Options";
-import Clock from "./components/Clock";
+import Options from "./Options";
+import Clock from "./Clock";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
-import PomodoroFooter from "./components/PomodoroFooter";
+import PomodoroFooter from "./PomodoroFooter";
 import { useSelector } from "react-redux";
-import Login from "./components/Login";
 
 function App() {
   const selectedLayout = useSelector((state) => state.layout.selectedLayout);
-  return <Login />;
+
   return (
     <Container className="fill-area centered">
       <Card
