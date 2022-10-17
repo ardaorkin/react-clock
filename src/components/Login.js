@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Card, Row } from "react-bootstrap";
-import loginRequest from "../helpers/loginRequest";
-import { redirect } from "react-router-dom";
+import API from "../api";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({});
@@ -15,7 +14,8 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const { token } = await loginRequest(credentials);
+      const api = new API();
+      const { token } = await api.loginRequest(credentials);
       localStorage.setItem("access_token", token);
       window.location.reload();
     } catch (error) {

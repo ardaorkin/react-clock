@@ -15,7 +15,7 @@ const PomodoroFooter = () => {
     <Row className="fill-area pomodoro-footer">
       <Col className="centered">
         Per Pomodoro:{" "}
-        {new Date(state.perPomodoro * 1000).toISOString().substr(11, 5)}
+        {new Date(state.perPomodoro * 1000).toISOString().substr(11, 8)}
         <span
           className="footer-btn"
           onClick={() => dispatch(increasePerPomodoro())}
@@ -31,7 +31,7 @@ const PomodoroFooter = () => {
       </Col>
       <Col className="centered">
         Per Break:{" "}
-        {new Date(state.breakLength * 1000).toISOString().substr(11, 5)}{" "}
+        {new Date(state.breakLength * 1000).toISOString().substr(11, 8)}{" "}
         <span
           className="footer-btn"
           onClick={() => dispatch(increaseBreakLength())}

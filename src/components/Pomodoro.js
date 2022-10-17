@@ -7,7 +7,9 @@ import {
   startPomodoro,
 } from "../redux/pomodoroReducer";
 import breakAlert from "../helpers/breakAlert";
+import API from "../api";
 
+const api = new API();
 const Pomodoro = () => {
   const state = useSelector((state) => state.pomodoro);
   const dispatch = useDispatch();
@@ -19,6 +21,7 @@ const Pomodoro = () => {
       state.pomodoroSeconds % state.perPomodoro === 0 &&
       state.pomodoroSeconds > 0
     ) {
+      Promise.resolve(api.createPomodoro({ length: state.perPomodoro }));
       breakAlert(pomodoroInterval.current);
       pomodoroInterval.current = null;
     }
