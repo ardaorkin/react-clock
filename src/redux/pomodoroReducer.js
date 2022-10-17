@@ -5,7 +5,8 @@ const initialState = {
   pomodoroSeconds: 0,
   pomodoroTime: "00:00:00",
   perPomodoro: 25 * 60, // 25 minutes
-  breakLength: 5 * 60, // 5 minutes
+  breakLength: 5 * 60, // 5 minutes,
+  user: {},
 };
 
 const pomodoroSlice = createSlice({
@@ -41,6 +42,9 @@ const pomodoroSlice = createSlice({
         .substr(11, 8);
     },
     resetPomodoro: (state) => (state = initialState),
+    setUserPomodoros: (state, action) => {
+      state.user.pomodoros = action.payload;
+    },
   },
 });
 
@@ -54,5 +58,6 @@ export const {
   decreaseBreakLength,
   increasePerPomodoro,
   decreasePerPomodoro,
+  setUserPomodoros,
 } = pomodoroSlice.actions;
 export default pomodoroSlice.reducer;

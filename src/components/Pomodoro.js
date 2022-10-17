@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addPomodoro,
   resetPomodoro,
+  setUserPomodoros,
   startPomodoro,
 } from "../redux/pomodoroReducer";
 import breakAlert from "../helpers/breakAlert";
@@ -15,6 +16,12 @@ const Pomodoro = () => {
   const dispatch = useDispatch();
   const pomodoroInterval = useRef(null);
   const [isDisabled, setIsDisabled] = useState(false);
+
+  useEffect(() => {
+    api.getUserPomodoros().then((userPomodoros) => {
+      dispatch(setUserPomodoros(userPomodoros));
+    });
+  }, []);
 
   useEffect(() => {
     if (

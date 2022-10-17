@@ -38,6 +38,21 @@ class API {
       throw error;
     }
   }
+
+  async getUserPomodoros() {
+    try {
+      const response = await fetch(`${this.url}/user/pomodoros`, {
+        headers: {
+          Authorization: localStorage.getItem("access_token"),
+          "Content-Type": "application/json",
+        },
+      });
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default API;
