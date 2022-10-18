@@ -36,7 +36,8 @@ const router = createBrowserRouter(
       <Route
         path="/logout"
         loader={async () => {
-          if (localStorage.removeItem("access_token")) {
+          if (localStorage.getItem("access_token")) {
+            localStorage.removeItem("access_token");
             return window.location.reload();
           }
           return redirect("/");

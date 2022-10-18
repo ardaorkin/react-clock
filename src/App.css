@@ -36,6 +36,7 @@
 .app-card {
   width: 35rem;
   height: 40rem;
+  margin-top: 5%;
 }
 
 .app-card-body {
@@ -168,4 +169,14 @@ input[type="radio"] {
 
 .pomodoro-footer {
   color: white;
+}
+
+.form-input {
+  border-radius: 0;
+}
+
+.logout-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }

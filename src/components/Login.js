@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Row } from "react-bootstrap";
+import { Button, Card, Form, Row } from "react-bootstrap";
 import API from "../api";
 
 const Login = () => {
@@ -35,21 +35,39 @@ const Login = () => {
       }}
     >
       <Card.Body className="app-card-body">
-        <Row className="centered">
-          <input
-            type="text"
-            name="username"
-            disabled={credentials.email?.length > 0}
-            onChange={handleCredentials}
-          />
-          <input
-            type="email"
-            name="email"
-            disabled={credentials.username?.length > 0}
-            onChange={handleCredentials}
-          />
-          <input type="password" name="password" onChange={handleCredentials} />
-          <input
+        <Row className="centered" style={{ padding: "5rem" }}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Control
+              className="form-input"
+              type="text"
+              placeholder="Enter username"
+              name="username"
+              disabled={credentials.email?.length > 0}
+              onChange={handleCredentials}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Control
+              className="form-input"
+              type="email"
+              placeholder="Enter email"
+              name="email"
+              disabled={credentials.username?.length > 0}
+              onChange={handleCredentials}
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Control
+              className="form-input"
+              type="password"
+              placeholder="Password"
+              name="password"
+              onChange={handleCredentials}
+            />
+          </Form.Group>
+          <Button
+            className="pomodoro-btn"
             type="submit"
             onClick={handleLogin}
             disabled={
@@ -58,8 +76,9 @@ const Login = () => {
                 credentials.password?.length
               )
             }
-            value="Login"
-          />
+          >
+            Login
+          </Button>
         </Row>
       </Card.Body>
     </Card>
