@@ -8,16 +8,17 @@ import {
 import Login from "./components/Login";
 import App from "./components/App";
 import { redirect } from "react-router-dom";
+import Enterance from "./components/Enterance";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route
       path="/"
-      element={localStorage.getItem("access_token") ? <App /> : <Login />}
+      element={localStorage.getItem("access_token") ? <App /> : <Enterance />}
     >
       <Route
         path="/login"
-        element={<Login />}
+        element={<Enterance />}
         loader={async () => {
           if (localStorage.getItem("access_token")) {
             return redirect("/");

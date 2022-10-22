@@ -1,3 +1,5 @@
+import { createRoot } from "react-dom/client";
+import { Alert } from "react-bootstrap";
 import { API_URL } from "../config";
 
 class API {
@@ -5,6 +7,7 @@ class API {
     this.url = API_URL;
     this.createPomodoro = this.createPomodoro.bind(this);
     this.loginRequest = this.loginRequest.bind(this);
+    this.alertContainer = createRoot(document.getElementById("alert-root"));
   }
   async createPomodoro(body) {
     try {
@@ -16,10 +19,16 @@ class API {
         },
         body: JSON.stringify({ date: new Date(), ...body }),
       });
-      const result = await response.json();
-      return result;
+      if (response.status === 200) {
+        const result = await response.json();
+        return result;
+      } else {
+        const errorMsg = await response.text();
+        throw errorMsg;
+      }
     } catch (error) {
-      throw error;
+      this.alertContainer.render(<Alert variant="danger">{error}</Alert>);
+      setTimeout(() => this.alertContainer.unmount(), 5000);
     }
   }
 
@@ -32,10 +41,39 @@ class API {
         },
         body: JSON.stringify(body),
       });
-      const result = await response.json();
-      return result;
+      if (response.status === 200) {
+        const result = await response.json();
+        return result;
+      } else {
+        const errorMsg = await response.text();
+        throw errorMsg;
+      }
     } catch (error) {
-      throw error;
+      this.alertContainer.render(<Alert variant="danger">{error}</Alert>);
+      setTimeout(() => this.alertContainer.unmount(), 5000);
+    }
+  }
+
+  async signupRequest(body) {
+    try {
+      const response = await fetch(`${this.url}/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+      if (response.status === 200) {
+        const result = await response.json();
+        return result;
+      } else {
+        const errorMsg = await response.text();
+        throw errorMsg;
+      }
+    } catch (error) {
+      console.log(error);
+      this.alertContainer.render(<Alert variant="danger">{`${error}`}</Alert>);
+      setTimeout(() => this.alertContainer.unmount(), 5000);
     }
   }
 
@@ -47,10 +85,16 @@ class API {
           "Content-Type": "application/json",
         },
       });
-      const result = await response.json();
-      return result;
+      if (response.status === 200) {
+        const result = await response.json();
+        return result;
+      } else {
+        const errorMsg = await response.text();
+        throw errorMsg;
+      }
     } catch (error) {
-      throw error;
+      this.alertContainer.render(<Alert variant="danger">{error}</Alert>);
+      setTimeout(() => this.alertContainer.unmount(), 5000);
     }
   }
 }

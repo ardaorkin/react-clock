@@ -180,3 +180,42 @@ input[type="radio"] {
   top: 1rem;
   right: 1rem;
 }
+
+.enterance-footer {
+  border: none;
+  background-color: transparent;
+}
+
+.enterance-btn {
+  background-color: transparent;
+  color: white;
+  border: none;
+}
+
+.enterance-btn:disabled {
+  background-color: transparent;
+  color: #a8b4be;
+  border: none;
+}
+
+.enterance-btn:hover {
+  background-color: #b73e3e;
+  border-radius: 0;
+  border: none;
+}
+
+.signup-row {
+  padding: 0;
+}
+
+.signup-header {
+  color: white;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.login-header {
+  color: white;
+  text-align: center;
+  margin-bottom: 3rem;
+}

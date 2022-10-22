@@ -34,6 +34,12 @@ body::-webkit-scrollbar {
   background-color: #b73e3e;
 }
 
+#alert-root {
+  position: absolute;
+  background-color: transparent;
+  top: 3rem;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
