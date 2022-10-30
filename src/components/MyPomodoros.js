@@ -13,7 +13,7 @@ const MyPomodoros = () => {
     });
   }, []);
   return (
-    <Table className="mypomodoros-table" striped bordered hover>
+    <Table striped bordered hover>
       <thead>
         <tr>
           <th>#</th>
