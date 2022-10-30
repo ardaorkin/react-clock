@@ -4,14 +4,24 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
 import PomodoroFooter from "./PomodoroFooter";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import logoutIcon from "bootstrap-icons/icons/box-arrow-right.svg";
+import { useEffect } from "react";
+import API from "../api";
+import { userTeams } from "../redux/teamsReducer";
+const api = new API();
 
 function App() {
+  const dispatch = useDispatch();
   const selectedLayout = useSelector((state) => state.layout.selectedLayout);
   const navigate = useNavigate();
+  useEffect(() => {
+    api.getMyTeam().then((teamData) => {
+      dispatch(userTeams(teamData));
+    });
+  }, []);
 
   return (
     <>
