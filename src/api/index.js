@@ -8,6 +8,7 @@ class API {
     this.createPomodoro = this.createPomodoro.bind(this);
     this.loginRequest = this.loginRequest.bind(this);
     this.alertContainer = createRoot(document.getElementById("alert-root"));
+    this.getMyTeam = this.getMyTeam.bind(this);
   }
   async createPomodoro(body) {
     try {
@@ -80,6 +81,27 @@ class API {
   async getUserPomodoros() {
     try {
       const response = await fetch(`${this.url}/user/pomodoros`, {
+        headers: {
+          Authorization: localStorage.getItem("access_token"),
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.status === 200) {
+        const result = await response.json();
+        return result;
+      } else {
+        const errorMsg = await response.text();
+        throw errorMsg;
+      }
+    } catch (error) {
+      this.alertContainer.render(<Alert variant="danger">{error}</Alert>);
+      setTimeout(() => this.alertContainer.unmount(), 5000);
+    }
+  }
+
+  async getMyTeam() {
+    try {
+      const response = await fetch(`${this.url}/myTeam`, {
         headers: {
           Authorization: localStorage.getItem("access_token"),
           "Content-Type": "application/json",

@@ -8,6 +8,7 @@ const options = [
   { name: "Analog", value: "analog" },
   { name: "Digital", value: "digital" },
   { name: "Pomodoro", value: "pomodoro" },
+  { name: "My Pomodoros", value: "mypomodoros" },
 ];
 
 const Options = () => {
